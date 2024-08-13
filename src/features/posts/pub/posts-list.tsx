@@ -17,7 +17,7 @@ export const PostsList = () => {
 
   const postDeleteMutation = useMutation({
     mutationFn: async(id: number) => {
-      return await axios.delete(`${BASE_URL}/posts/${id}`,);
+      return await axios.delete(`${BASE_URL}/${id}`,);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["posts"] });
