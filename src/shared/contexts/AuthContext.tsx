@@ -19,8 +19,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<string | null>(null);
   const loginMutation = useLoginMutation();
   const registerMutation = useRegisterMutation();
-  const fetchSessionQuery = useFetchSession()
+  // const fetchSessionQuery = useFetchSession()
   const router = useRouter();
+
+
+
+  
 
   const login = (email: string, password: string) => {
     loginMutation.mutate(
@@ -58,9 +62,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     );
   };
 
-  const fetchSession = () =>{
-    
-  }
 
   const logout = () => {
     setUser(null);

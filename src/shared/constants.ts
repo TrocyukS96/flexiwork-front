@@ -4,3 +4,9 @@ export const BASE_URL =
 export const queryKeys = {
   SESSION: "session",
 };
+
+export const routes = {
+  REGISTRATION : '/registration',
+  LOGIN : '/login',
+  HOME:'/'
+}

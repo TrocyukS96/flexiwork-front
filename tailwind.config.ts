@@ -17,6 +17,15 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
+      width: {
+        '138': '34.625rem', //auth center block
+      },
+      backgroundImage: {
+        'auth-layout-bg': "url('/images/auth-bg.png')",
+      },
+      backdropBlur: {
+        sm: '7.5px',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
