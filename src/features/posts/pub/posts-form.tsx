@@ -15,7 +15,8 @@ import { Input } from "@/shared/ui/input";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { BASE_URL } from "@/shared/constants";
+import { BASE_URL, requestStatuses } from "@/shared/constants";
+import { getQueryConfig } from "@/shared/api/api";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -39,19 +40,26 @@ export const PostsForm = () => {
 
   const postCreateMutation = useMutation({
     mutationFn: async (data: CreatePostListElementCommand) => {
-      return await axios.post(BASE_URL+'/posts', data);
+      await getQueryConfig({
+        url: "/posts",
+        method: "post",
+        body: data,
+      });
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      queryClient.invalidateQueries({ queryKey: [requestStatuses.GET_POSTS] });
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    postCreateMutation.mutate({...values},{
-        onSuccess:()=>{
-            form.reset()
-        }
-    })
+    postCreateMutation.mutate(
+      { ...values },
+      {
+        onSuccess: () => {
+          form.reset();
+        },
+      },
+    );
   }
 
   return (
