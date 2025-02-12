@@ -1,16 +1,13 @@
-'use-client'
-import { PostsForm } from "@/features/posts/pub/posts-form";
-import { PostsList } from "@/features/posts/pub/posts-list";
+"use-client";
 import WithAuth from "@/shared/hoks/withAuthGuard";
+import MainLayout from "@/shared/layouts/MainLayout";
 
 export default function Home() {
   return (
     <WithAuth>
-      <main className="min-h-screen px-8 py-8">
-        {/* <Button>Button</Button> */}
-        <PostsForm />
-        <PostsList />
-      </main>
+      <MainLayout>
+        <div>Главная 123</div>
+      </MainLayout>
     </WithAuth>
   );
 }

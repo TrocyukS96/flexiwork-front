@@ -1,6 +1,6 @@
 "use client";
 
-import { Registration } from "@/features/registration/pub/Registration";
+import { Registration } from "@/features/registration";
 import AuthLayout from "@/shared/layouts/AuthLayout";
 
 export default function Login() {

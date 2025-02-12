@@ -37,9 +37,6 @@ const formSchema = z.object({
 
 export const Registration = () => {
   const { register } = useAuth();
-  const pathname = usePathname();
-
-  console.log(pathname)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -87,6 +84,7 @@ export const Registration = () => {
               <FormControl>
                 <Input
                   placeholder="Text"
+                  type="password"
                   {...field}
                   className="h-12 text-xs text-black bg-white"
                 />
@@ -104,6 +102,7 @@ export const Registration = () => {
               <FormControl>
                 <Input
                   placeholder="Text"
+                  type="password"
                   {...field}
                   className="h-12 text-xs text-black bg-white"
                 />
@@ -115,32 +114,5 @@ export const Registration = () => {
         <Button type="submit" className="w-full h-12 text-xs text-white bg-[#9433DC] hover:bg-[#9433DC]">Зарегистрироваться</Button>
       </form>
     </Form>
-  );
-
-  return (
-    <div>
-      {/* <h1>Вход</h1> */}
-      {/* <form onSubmit={handleSubmit}>
-        <div>
-          <label>Имя пользователя:</label>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Пароль:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Зарегеистрироваться</button>
-      </form> */}
-    </div>
   );
 };

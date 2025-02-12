@@ -9,8 +9,9 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { ACCESS_TOKEN } from "../constants";
+import { ACCESS_TOKEN, routes } from "../constants";
 import { useLoginMutation, useRegisterMutation } from "../api/queries/auth-queries";
+import { LoginDto } from "../types/dto";
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -20,14 +21,7 @@ interface AuthContextType {
   logout: () => void;
 }
 
-interface LoginDto {
-  accessToken: string;
-  user: {
-    email: string;
-    id: number;
-    name: string | null;
-  };
-}
+
 
 export const AuthContext = createContext<AuthContextType | undefined>(
   undefined,
@@ -47,7 +41,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       setUser(data.user);
       sessionStorage.setItem(ACCESS_TOKEN, `Bearer ${data?.accessToken}`);
       setIsAuthenticated(true);
-      router.push("/");
+      router.push(routes.HOME);
     }
   }
 
@@ -83,16 +77,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     setUser(null);
     setIsAuthenticated(false);
     sessionStorage.removeItem(ACCESS_TOKEN);
-    router.push("/login");
+    router.push(routes.LOGIN);
   };
 
   useEffect(() => {
     const token = sessionStorage.getItem(ACCESS_TOKEN);
     if (token) {
       setIsAuthenticated(true);
-      router.push("/");
+      router.push(routes.HOME);
     }
-  }, []);
+  }, [router]);
 
   return (
     <AuthContext.Provider

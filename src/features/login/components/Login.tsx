@@ -3,17 +3,18 @@ import { useAuth } from "@/shared/contexts/AuthContext";
 
 import { Button } from "@/components/ui/button";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/shared/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Spinner } from "@/shared/ui/spinner";
 
 const formSchema = z.object({
   email: z
@@ -54,7 +55,7 @@ export const Login = () => {
               <FormLabel className={formLabelClass}>Email</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='Text'
+                  placeholder="Text"
                   {...field}
                   className="h-12 text-xs text-black bg-white"
                 />
@@ -72,6 +73,7 @@ export const Login = () => {
               <FormControl>
                 <Input
                   placeholder="Text"
+                  type="password"
                   {...field}
                   className="h-12 text-xs text-black bg-white"
                 />
@@ -80,7 +82,12 @@ export const Login = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full h-12 text-xs text-white bg-[#9433DC] hover:bg-[#9433DC]">Войти</Button>
+        <Button
+          type="submit"
+          className="w-full h-12 text-xs text-white bg-[#9433DC] hover:bg-[#9433DC]"
+        >
+          Войти
+        </Button>
       </form>
     </Form>
   );

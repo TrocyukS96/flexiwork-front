@@ -1,6 +1,6 @@
 "use client";
 
-import { Login } from "@/features/login/pub/Login";
+import { Login } from "@/features/login";
 import AuthLayout from "@/shared/layouts/AuthLayout";
 import React from "react";
 
