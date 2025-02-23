@@ -9,8 +9,10 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { ACCESS_TOKEN, routes } from "../constants";
+import toast from "react-hot-toast";
 import { useLoginMutation, useRegisterMutation } from "../api/queries/auth-queries";
+import { ACCESS_TOKEN, routes } from "../constants";
+import { useStore } from "../store/store";
 import { LoginDto } from "../types/dto";
 
 interface AuthContextType {
@@ -31,6 +33,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const {setLoading} = useStore((state) => state);
   const [user, setUser] = useState<LoginDto["user"] | null>(null);
   const loginMutation = useLoginMutation();
   const registerMutation = useRegisterMutation();
@@ -46,6 +49,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   }
 
   const login = (email: string, password: string) => {
+    setLoading(true)
     loginMutation.mutate(
       { email, password },
       {
@@ -54,12 +58,17 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         },
         onError: (error) => {
           console.error("Login failed:", error);
+          toast.error('Что-то пошло не так')
         },
+        onSettled:()=>{
+          setLoading(false)
+        }
       },
     );
   };
 
   const register = (email: string, password: string) => {
+    setLoading(true)
     registerMutation.mutate(
       { email, password },
       {
@@ -68,7 +77,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         },
         onError: (error) => {
           console.error("Login failed:", error);
+          toast.error('Что-то пошло не так')
         },
+        onSettled:()=>{
+          setLoading(false)
+        }
       },
     );
   };

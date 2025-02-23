@@ -1,13 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ACCESS_TOKEN, routes } from "@/shared/constants";
-import { useRouter } from "next/navigation";
+import { useAuth } from "@/shared/contexts/AuthContext";
 
 interface NavigationProps {}
 
-const Navigation = ({}: NavigationProps) => {
-    const router = useRouter();
+export const Navigation = ({}: NavigationProps) => {
+    const { logout } = useAuth();
     return (
         <div className="w-[150px] p-4 border border-white text-white">
         <nav>
@@ -30,10 +29,7 @@ const Navigation = ({}: NavigationProps) => {
             <li className="mb-2 text-white">
               <Button
                 className="w-full h-12 text-xs text-white bg-[#9433DC] hover:bg-[#9433DC]"
-                onClick={() => {
-                  sessionStorage.removeItem(ACCESS_TOKEN);
-                  router.push(routes.LOGIN);
-                }}
+                onClick={logout}
               >
                 Выйти
               </Button>
@@ -43,5 +39,3 @@ const Navigation = ({}: NavigationProps) => {
       </div>
     )
 }
-
-export default Navigation

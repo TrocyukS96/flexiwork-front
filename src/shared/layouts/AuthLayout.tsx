@@ -31,7 +31,6 @@ export default function AuthLayout({ children }: { children: ReactElement }) {
 
   return (
     <div className="h-screen flex justify-center items-center bg-auth-layout-bg bg-center bg-cover bg-no-repeat">
-      {/* <Spinner /> */}
       <div className="flex flex-col gap-y-12">
         <Image
           src={"/images/auth-logo.png"}

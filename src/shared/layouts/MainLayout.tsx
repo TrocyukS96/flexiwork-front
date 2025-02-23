@@ -1,5 +1,5 @@
+import { Navigation } from "@/entities/navigation";
 import { ReactElement } from "react";
-import Navigation from "@/entities/navigation/Navigation";
 
 export default function MainLayout({ children }: { children: ReactElement }) {
   return (

@@ -17,6 +17,7 @@ import { Input } from "@/shared/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePathname, useRouter } from "next/navigation";
+import { PasswordInput } from "@/shared/ui/password-input";
 
 const formSchema = z.object({
   email: z
@@ -82,9 +83,8 @@ export const Registration = () => {
             <FormItem>
               <FormLabel className={formLabelClass}>Пароль</FormLabel>
               <FormControl>
-                <Input
+                <PasswordInput
                   placeholder="Text"
-                  type="password"
                   {...field}
                   className="h-12 text-xs text-black bg-white"
                 />
@@ -100,9 +100,8 @@ export const Registration = () => {
             <FormItem>
               <FormLabel className={formLabelClass}>Повторить пароль</FormLabel>
               <FormControl>
-                <Input
+                <PasswordInput
                   placeholder="Text"
-                  type="password"
                   {...field}
                   className="h-12 text-xs text-black bg-white"
                 />

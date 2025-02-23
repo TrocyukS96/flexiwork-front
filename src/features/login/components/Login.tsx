@@ -14,7 +14,7 @@ import { Input } from "@/shared/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Spinner } from "@/shared/ui/spinner";
+import { PasswordInput } from "@/shared/ui/password-input";
 
 const formSchema = z.object({
   email: z
@@ -71,9 +71,8 @@ export const Login = () => {
             <FormItem>
               <FormLabel className={formLabelClass}>Пароль</FormLabel>
               <FormControl>
-                <Input
+                <PasswordInput
                   placeholder="Text"
-                  type="password"
                   {...field}
                   className="h-12 text-xs text-black bg-white"
                 />

@@ -18,9 +18,9 @@ const WithAuth: React.FC<AuthGuardProps> = ({ children }) => {
   }, [context, router]);
 
   // Пока идет перенаправление или аутентификация, можно показывать загрузку
-  if (!context?.isAuthenticated) {
-    return <div>Loading...</div>;
-  }
+  // if (!context?.isAuthenticated) {
+  //   return <div>Loading...</div>;
+  // }
 
   return <>{children}</>;
 };

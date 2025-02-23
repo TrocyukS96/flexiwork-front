@@ -1,7 +1,9 @@
+import { GlobalLoader } from "@/entities/global-loader";
 import { Providers } from "@/shared/providers";
 import { cn } from "@/shared/ui/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 // Create a client
@@ -28,7 +30,11 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <GlobalLoader />
+          <Toaster />
+          {children}
+        </Providers>
       </body>
     </html>
   );
