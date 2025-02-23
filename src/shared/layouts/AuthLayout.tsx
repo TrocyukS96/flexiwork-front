@@ -4,7 +4,6 @@ import { ReactElement } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { usePathname, useRouter } from "next/navigation";
 import { routes } from "../constants";
-import { Spinner } from "../ui/spinner";
 
 export default function AuthLayout({ children }: { children: ReactElement }) {
   const router = useRouter();

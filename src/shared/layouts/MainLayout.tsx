@@ -1,11 +1,14 @@
-"use-client";
 import { ReactElement } from "react";
+import Navigation from "@/entities/navigation/Navigation";
 
 export default function MainLayout({ children }: { children: ReactElement }) {
-
   return (
-    <main className="h-screen flex justify-center items-center bg-center bg-cover bg-no-repeat">
+    <div className="p-6 h-screen flex bg-black bg-center bg-cover bg-no-repeat">
+      <Navigation/>
+      <main className="flex-1 p-4 text-white">
+        Центральный контент
         {children}
-    </main>
+      </main>
+    </div>
   );
 }
